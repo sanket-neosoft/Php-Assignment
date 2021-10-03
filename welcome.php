@@ -1,6 +1,7 @@
 <?php
 // session login logic
-if (empty($_SESSION["email"])) {
+session_start();
+if (!empty($_SESSION["email"])) {
     header("location: dashboard.php");
 }
 
