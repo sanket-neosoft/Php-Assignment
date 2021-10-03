@@ -2,7 +2,7 @@
 error_reporting(0);
 
 // session login logic
-if (isset($_SESSION["email"])) {
+if (empty($_SESSION["email"])) {
     header("location: dashboard.php");
 }
 
