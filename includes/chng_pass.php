@@ -29,13 +29,13 @@ if (isset($_POST["sub"])) {
 
     // change password logic 
     if ($old_passwordErr === "" && $new_passwordErr === "" && $confirm_passwordErr === "") {
-        if (trim($password) !== substr(sha1($old_password), 5, 10)) {
-            $old_passwordErr = substr(sha1($old_password), 5, 10)."Enter Correct Password";
+        if (trim($password) !== substr(md5($old_password), 5, 10)) {
+            $old_passwordErr = "Enter Correct Password";
         } else {
             if ($confirm_password != $new_password) {
                 $confirm_passwordErr = "Password doesn't Match";
             } else {
-                file_put_contents("user/$email/" . "details.txt", $username . "\n" . substr(sha1($confirm_password), 5, 10) . "\n" . $name . "\n" . $age . "\n" . $gender . "\n" . $image_path);
+                file_put_contents("user/$email/" . "details.txt", $username . "\n" . substr(md5($confirm_password), 5, 10) . "\n" . $name . "\n" . $age . "\n" . $gender . "\n" . $image_path);
                 $success_msg = "<div id='alert' class='alert alert-success position-absolute translate-middle bottom-0 end-0 w-25 text-center pt-3'>Password Changed Successfully</div>";
             }
         }

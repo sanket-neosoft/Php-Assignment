@@ -88,7 +88,7 @@ if (isset($_POST["sub"])) {
                 $emailErr = "Email id already registered.";
             } else if ($ext == "jpg" || $ext == "png" || $ext == "jpeg") {
                 mkdir("user/$email");
-                $pass = substr(sha1($password), 5, 10);
+                $pass = substr(md5($password), 5, 10);
                 file_put_contents("user/$email/" . "details.txt", $username . "\n" . $pass . "\n" . $name . "\n" . $age . "\n" . $gender . "\n" . $fn);
                 if (move_uploaded_file($tmp, "user/$email/$fn")) {
                     header("location: welcome.php?uid=$email");

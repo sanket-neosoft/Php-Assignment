@@ -42,7 +42,7 @@ if (isset($_POST["sub"])) {
         if (is_dir("user/" . $email)) {
             $fo = fopen("user/$email/details.txt", "r");
             fgets($fo);
-            $pass = substr(sha1($password), 5, 10);
+            $pass = substr(md5($password), 5, 10);
             if ($pass === trim(fgets($fo))) {
                 $_SESSION["email"] = $email;
                 if (!empty($_POST["remember"])) {
